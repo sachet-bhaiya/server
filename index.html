@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MS32</title>
+    <link href="https://fonts.googleapis.com/css2?family=Silkscreen&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <textarea placeholder="Type something..." class="text" name="text"></textarea>
+        <button class="btn" type="button" onclick="edit()">Send</button>
+    </div>
+
+    <div class="status">Offline</div>
+
+    <div class="bottom-left">
+        <label for="fileInput" class="file-label">Choose File</label>
+        <input type="file" class="file-input" id="fileInput">
+        <button class="update-btn" onclick="updateFile()">Update</button>
+    </div>
+
+    <div class="sidebar">
+        <div class="sidebar-header">Audio Files</div>
+        <div class="bottom-fixed">
+            <label for="file-input" id="audio-file" class="file-label-green">Choose File</label>
+            <input type="file" id="file-input" class="file-input">
+            
+            <button class="upload-btn" onclick="upload()">Upload</button>
+        </div>
+    </div>
+
+    <script src="script.js"> 
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,215 @@
+@import url('https://fonts.googleapis.com/css2?family=Slickscreen&display=swap');
+
+/* Global Styles */
+*,
+html {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Slickscreen', monospace;
+    background-color: #0d1117;
+    color: #c9d1d9;
+    overflow-y: scroll; /* Ensures scrolling for body */
+    height: 100%;
+}
+
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #161b22;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #f0f6fc;
+    overflow-y: auto; /* Makes sidebar scrollable */
+}
+
+.sidebar-header {
+    font-size: 1.5em;
+    text-align: center;
+    border-bottom: 2px solid #c9d1d9;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+/* Audio Item Styles */
+.audio-item {
+    background-color: #21262d;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.audio-item:hover {
+    background-color: #30363d;
+}
+
+/* Centered Container Styles */
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Textarea Styles */
+textarea.text {
+    width: 100%;
+    height: 100px;
+    padding: 10px;
+    border: 1px solid #30363d;
+    border-radius: 5px;
+    font-size: 16px;
+    background-color: #0d1117;
+    color: #f0f6fc;
+    resize: none;
+}
+
+/* Button Styles */
+button.btn,
+.file-label-green,
+.upload-btn,
+.update-btn {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button.btn {
+    background-color: #238636;
+    color: white;
+}
+
+button.btn:hover {
+    background-color: #2ea043;
+}
+
+/* Upload Button Styles */
+.upload-btn {
+    background-color: #007bff;
+    color: white;
+}
+
+.upload-btn:hover {
+    background-color: #0056b3;
+}
+
+/* Update Button Styles */
+.update-btn {
+    background-color: #238636;
+    color: white;
+}
+
+.update-btn:hover {
+    background-color: #2ea043;
+}
+
+/* Green File Label Button */
+.file-label-green {
+    background-color: #238636;
+    color: white;
+    display: block;
+}
+
+.file-label-green:hover {
+    background-color: #2ea043;
+}
+
+/* Bottom Left Position for Buttons */
+.bottom-left {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    display: flex;
+    flex-direction: column; /* Stack buttons vertically */
+    gap: 10px; /* Gap between buttons */
+    align-items: flex-start; /* Align to the left */
+}
+
+/* Status Style */
+.status {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-size: 14px;
+    color: #8b949e;
+}
+
+/* File Input Hidden */
+input.file-input {
+    display: none;
+}
+/* Sidebar Styles */
+.sidebar {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #161b22;
+    box-shadow: -5px 0 10px rgba(0, 0, 0, 0.7);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    color: #f0f6fc;
+    overflow-y: auto; /* Makes sidebar scrollable */
+    padding-bottom: 80px; /* Add space for the fixed buttons at the bottom */
+}
+
+/* Bottom Fixed Buttons in Sidebar */
+.bottom-fixed {
+    position: absolute;
+    bottom: 20px; /* Distance from the bottom of the sidebar */
+    left: 20px; /* Distance from the left side of the sidebar */
+    right: 20px; /* Distance from the right side of the sidebar */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.file-label-green,
+.upload-btn {
+    padding: 10px 20px;
+    background-color: #238636;
+    color: #f0f6fc;
+    border: 1px solid #30363d;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.file-label-green:hover,
+.upload-btn:hover {
+    background-color: #2ea043;
+}
+
+.upload-btn {
+    background-color: #007bff;
+}
+
+.upload-btn:hover {
+    background-color: #0056b3;
+}
