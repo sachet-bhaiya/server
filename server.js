@@ -12,4 +12,7 @@ wss.on('connection', (ws) => {
     });
 });
 
-console.log('WebSocket server is running');
+const address = wss.server.address();
+const uri = `ws://${address.address}:${address.port}`;
+
+console.log(`WebSocket server is running at ${uri}`);
