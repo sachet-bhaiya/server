@@ -12,6 +12,7 @@ let screenshotData = null;
 app.get('/screenshot', (req, res) => {
     if (screenshotData) {
         res.status(200).send({ screenshot: screenshotData });
+        console.log("sended screenshot")
     } else {
         res.status(404).send({ error: 'No screenshot data available' });
     }
@@ -26,7 +27,6 @@ const wss = new WebSocket.Server({ server });
 // Handle WebSocket connections
 wss.on('connection', (ws) => {
     ws.on('message', (message) => {
-        console.log(`Received: ${message}`);
 
         // Store the message as screenshot data
         screenshotData = message;
