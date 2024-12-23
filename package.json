@@ -1,15 +1,18 @@
 {
-  "name": "websocket-server",
+  "name": "websocket-express-server",
   "version": "1.0.0",
-  "description": "A simple WebSocket server to broadcast messages to all clients",
+  "description": "A WebSocket server with Express and a screenshot route.",
   "main": "server.js",
   "scripts": {
     "start": "node server.js"
   },
-  "keywords": ["websocket", "server", "broadcast"],
-  "author": "Your Name",
-  "license": "MIT",
   "dependencies": {
-    "ws": "^8.13.0"
-  }
+    "express": "^4.18.2",
+    "ws": "^8.7.0"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "author": "",
+  "license": "ISC"
 }
