@@ -6,7 +6,7 @@ const app = express();
 // Enable CORS for all routes
 
 // Initialize Express app
-const app = express();
+
 app.use(cors())
 // Variable to hold the screenshot data
 let screenshotData = null;
