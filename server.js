@@ -1,11 +1,13 @@
 const express = require('express');
 const http = require('http');
 const WebSocket = require('ws');
-const cors = require('cors');  // Import the cors package
-
 const app = express();
-app.use(cors());  // Enable CORS for all routes
 
+// Enable CORS for all routes
+
+// Initialize Express app
+const app = express();
+app.use(cors())
 // Variable to hold the screenshot data
 let screenshotData = null;
 
@@ -13,7 +15,7 @@ let screenshotData = null;
 app.get('/screenshot', (req, res) => {
     if (screenshotData) {
         res.status(200).send({ screenshot: screenshotData });
-        console.log("Sent screenshot");
+        console.log("sended screenshot")
     } else {
         res.status(404).send({ error: 'No screenshot data available' });
     }
@@ -28,13 +30,15 @@ const wss = new WebSocket.Server({ server });
 // Handle WebSocket connections
 wss.on('connection', (ws) => {
     ws.on('message', (message) => {
+
         // Store the message as screenshot data
         screenshotData = message;
+        console.log("got screenshot")
 
         // Broadcast the message to all connected clients
         wss.clients.forEach((client) => {
             if (client.readyState === WebSocket.OPEN) {
-                client.send(message);  // Sending the screenshot data to clients
+                client.send(message);
             }
         });
     });
