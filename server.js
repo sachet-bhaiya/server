@@ -1,6 +1,6 @@
 const express = require('express');
 const http = require('http');
-const cors = reqire('cors')
+const cors = require('cors')
 const WebSocket = require('ws');
 const app = express();
 
