@@ -11,7 +11,7 @@ let screenshotData = null;
 
 
 app.get('/', (req, res) => {
-    res.send('Welcome to the Express server hosted on Vercel!');
+    res.send('screen share server');
 });
 app.post('/screenshot', (req, res) => {
     screenshotData = req.body;
