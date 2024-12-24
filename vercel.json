@@ -8,6 +8,11 @@
   ],
   "routes": [
     {
+      "src": "/screenshot",
+      "methods": ["GET", "POST"],
+      "dest": "server.js"
+    },
+    {
       "src": "/(.*)",
       "dest": "server.js"
     }
