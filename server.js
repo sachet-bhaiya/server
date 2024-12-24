@@ -1,42 +1,44 @@
 const express = require('express');
 const http = require('http');
-const cors = require('cors')
+const cors = require('cors');
 const WebSocket = require('ws');
 const app = express();
 
-// Enable CORS for all routes
+app.use(cors());
 
-// Initialize Express app
+app.use(express.json());
 
-app.use(cors())
-// Variable to hold the screenshot data
 let screenshotData = null;
 
-// Define a route to return the screenshot data
-app.get('/screenshot', (req, res) => {
-    if (screenshotData) {
-        res.status(200).send({ screenshot: screenshotData });
-        console.log("sended screenshot")
-    } else {
-        res.status(404).send({ error: 'No screenshot data available' });
-    }
-});
+app.route('/screenshot')
+    .get((req, res) => {
+        if (screenshotData) {
+            res.status(200).send({ screenshot: screenshotData });
+            console.log("Sent screenshot");
+        } else {
+            res.status(404).send({ error: 'No screenshot data available' });
+        }
+    })
+    .post((req, res) => {
+        const { screenshot } = req.body; 
+        if (screenshot) {
+            screenshotData = screenshot; 
+            console.log("got screenshot");
+            res.status(200).send({ message: 'Screenshot data stored successfully' });
+        } else {
+            res.status(400).send({ error: 'Invalid screenshot data' });
+        }
+    });
 
-// Create an HTTP server from the Express app
 const server = http.createServer(app);
 
-// Initialize WebSocket server
 const wss = new WebSocket.Server({ server });
 
-// Handle WebSocket connections
 wss.on('connection', (ws) => {
     ws.on('message', (message) => {
-
-        // Store the message as screenshot data
         screenshotData = message;
-        console.log("got screenshot")
+        console.log("Received screenshot via WebSocket");
 
-        // Broadcast the message to all connected clients
         wss.clients.forEach((client) => {
             if (client.readyState === WebSocket.OPEN) {
                 client.send(message);
@@ -45,10 +47,8 @@ wss.on('connection', (ws) => {
     });
 });
 
-// Start the server
 const PORT = process.env.PORT || 8080;
 server.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
     console.log(`WebSocket server is running.`);
-    console.log(`HTTP server is available at http://localhost:${PORT}/screenshot`);
 });
