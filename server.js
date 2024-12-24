@@ -9,14 +9,13 @@ app.use(express.raw({ type: 'application/octet-stream' }));
 
 let screenshotData = null;
 
-
 app.get('/', (req, res) => {
     res.send('screen share server');
 });
+
 app.post('/screenshot', (req, res) => {
     screenshotData = req.body;
     console.log("Screenshot data received and stored.");
-
     res.status(200).send({ message: 'Screenshot data received and stored successfully' });
 });
 
@@ -32,18 +31,32 @@ app.get('/screenshot', (req, res) => {
 
 const server = http.createServer(app);
 
-const wss = new WebSocket.Server({ server });
+const wss = new WebSocket.Server({ 
+    server,
+    clientTracking: true,
+    perMessageDeflate: false, 
+});
 
 wss.on('connection', (ws) => {
+    console.log('New WebSocket connection established');
+    
     ws.on('message', (message) => {
         screenshotData = message;
         console.log("Received screenshot via WebSocket");
-
+        
         wss.clients.forEach((client) => {
             if (client.readyState === WebSocket.OPEN) {
                 client.send(message);
             }
         });
+    });
+
+    ws.on('close', () => {
+        console.log('WebSocket connection closed');
+    });
+
+    ws.on('error', (error) => {
+        console.error('WebSocket error: ', error);
     });
 });
 
