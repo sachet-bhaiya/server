@@ -20,8 +20,7 @@ app.post('/screenshot', (req, res) => {
 });
 
 app.get('/screenshot', (req, res) => {
-    if (screenshotData) {
-        res.setHeader('Content-Type', 'image/jpeg');  
+    if (screenshotData) {  
         res.status(200).send(screenshotData); 
         console.log("Sent screenshot data.");
     } else {
