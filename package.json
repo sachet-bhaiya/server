@@ -1,5 +1,5 @@
 {
-  "name": "your-project-name",
+  "name": "ms32",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -14,5 +14,6 @@
   "devDependencies": {},
   "engines": {
     "node": "16.x"
-  }
+  },
+  "license": "MIT"
 }
