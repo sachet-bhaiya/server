@@ -22,7 +22,8 @@ app.post('/screenshot', (req, res) => {
 
 app.get('/screenshot', (req, res) => {
     if (screenshotData) {
-        res.status(200).send({ screenshot: screenshotData });
+        res.setHeader('Content-Type', 'image/jpeg');  
+        res.status(200).send(screenshotData); 
         console.log("Sent screenshot data.");
     } else {
         res.status(404).send({ error: 'No screenshot data available' });
