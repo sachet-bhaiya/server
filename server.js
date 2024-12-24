@@ -9,6 +9,10 @@ app.use(express.raw({ type: 'application/octet-stream' }));
 
 let screenshotData = null;
 
+
+app.get('/', (req, res) => {
+    res.send('Welcome to the Express server hosted on Vercel!');
+});
 app.post('/screenshot', (req, res) => {
     screenshotData = req.body;
     console.log("Screenshot data received and stored.");
