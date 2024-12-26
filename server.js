@@ -20,8 +20,7 @@ app.post('/screenshot', (req, res) => {
 });
 
 app.get('/screenshot', (req, res) => {
-    if (screenshotData) {
-        res.setHeader('Content-Type', 'image/jpeg');  
+    if (screenshotData) {  
         res.status(200).send(screenshotData); 
         console.log("Sent screenshot data.");
     } else {
@@ -33,7 +32,6 @@ const server = http.createServer(app);
 
 const wss = new WebSocket.Server({ 
     server,
-    maxPayload: 3 * 1024 * 1024,
     clientTracking: true,
     perMessageDeflate: false, 
 });
@@ -52,9 +50,9 @@ wss.on('connection', (ws) => {
         });
     });
 
-    ws.on('close', (code, reason) => {
-        const reasonString = reason || 'No reason provided';
-        console.log(`WebSocket connection closed. Code: ${code}, Reason: ${reasonString}`);
+    ws.on('close', () => {
+        console.log('WebSocket connection closed');
+        ws.close(1000, "Server closing connection");
     });
 
     ws.on('error', (error) => {
