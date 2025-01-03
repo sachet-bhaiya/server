@@ -5,7 +5,10 @@ const WebSocket = require('ws');
 const app = express();
 
 app.use(cors());
-app.use(express.raw({ type: 'application/octet-stream' }));
+app.use(cors({
+    origin: '*', // Allow all origins
+    methods: ['GET', 'POST']
+}));
 
 let screenshotData = null;
 let audio = null;
