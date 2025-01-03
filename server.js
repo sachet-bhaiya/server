@@ -35,7 +35,12 @@ app.post('/audio', (req, res) => {
 
 app.get('/audio', (req, res) => {
   if (audio) {
-    res.status(200).send(audio);
+    // **Highlight**: Set the correct content-type for audio files (e.g., WAV or MP3)
+    res.set('Content-Type', 'audio/wav');  // For WAV files
+    // **If you have MP3 files**:
+    // res.set('Content-Type', 'audio/mpeg'); // For MP3 files
+    
+    res.status(200).send(audio);  // Sending the audio data as raw binary
     console.log("Sent audio data.");
   } else {
     res.status(404).send({ error: 'No audio data available' });
