@@ -59,7 +59,7 @@ wss.on('connection', (ws) => {
   console.log('New WebSocket connection established');
 
   ws.on('message', (message) => {
-    screenshotData = message;
+     audio = message;
     console.log("Received screenshot via WebSocket");
 
     wss.clients.forEach((client) => {
